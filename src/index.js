@@ -51,3 +51,36 @@ let currentDateELement = document.querySelector("#current-date");
 let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
+
+function getForecast() {
+  let key = "499def18ob13464ab33fa909dde1e7t0";
+  let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${key}`;
+}
+
+function displayWeather() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="forecast-day">
+        <div class="forecast-date">${day}</div>
+        <div class="icon">🌤️</div>
+        <div class="temperature">
+          <div class="temp1">
+            <strong>15º</strong>
+          </div>
+          <div class="temp2">9º</div>
+        </div>
+      </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+searchCity("Paris");
+displayWeather();
